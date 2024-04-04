@@ -1,8 +1,9 @@
 
 @section('content')
     <h1>@yield('title')</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-
+    <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method('POST')
         <div class="form-group">
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name" class="form-control" value="{{old('name', $product->name)}}">
