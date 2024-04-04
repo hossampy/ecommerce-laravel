@@ -30,7 +30,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="6"> <h4>no products</h4></td>
+                <td colspan="6" align="center"> <h4>no products</h4></td>
             </tr>
 
         @endforelse
