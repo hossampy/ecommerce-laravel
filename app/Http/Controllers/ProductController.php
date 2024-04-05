@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::query()->paginate(1);
+        $products = Product::query()->paginate(2);
         return view('product.index',compact('products'));
     }
 
@@ -23,7 +23,8 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        return view('product.create',compact('product'));
+        $isUpdate = false;
+        return view('product.form',compact('product' ,'isUpdate'));
     }
 
     /**
@@ -31,7 +32,14 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        dd( $request);
+        $formFields=$request->validated();
+            if($request->hasFile('image')){
+                $formFields['image'] = $request->file('image')->store('product', 'public');
+            }
+
+            Product::create($formFields);
+
+        return to_route('products.index')->with('success', 'Product created successfully');
         //
     }
 
@@ -48,7 +56,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $product = new Product();
+        $isUpdate = true;
+        return view('product.form',compact('product','isUpdate'));
     }
 
     /**
@@ -64,6 +74,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+       $product->delete();
+        return to_route('products.index')->with('success', 'Product deleted successfully');
+
     }
 }

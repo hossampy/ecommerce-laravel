@@ -1,9 +1,14 @@
+@extends('base')
+@section('title',$isUpdate ? 'Update product' :'create product' )
 
 @section('content')
-    <h1>@yield('title')</h1>
+
+    <h1 >@yield('title')</h1>
+
     <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('POST')
+
         <div class="form-group">
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name" class="form-control" value="{{old('name', $product->name)}}">
@@ -41,4 +46,11 @@
             <input type="submit" class="btn btn-primary w-100" value="submit">
         </div>
     </form>
+
+
+
+
+
 @endsection
+
+

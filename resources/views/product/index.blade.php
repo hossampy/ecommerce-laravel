@@ -2,7 +2,7 @@
 @section('title','Prodzucts')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between m-4 align-items-center">
         <h1>Product list </h1>
         <a href="{{route('products.create')}}" class="btn btn-primary">Create</a>
     </div>
@@ -12,11 +12,12 @@
             <th>#ID</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Category</th>
+
             <th>Quantity</th>
             <th>Image</th>
             <th>Price</th>
-            <th>Actions</th>
+            <th>ACTION </th>
+            <th>Category</th>
         </tr>
         </thead>
         <tbody>
@@ -25,8 +26,20 @@
                 <td>{{$product->id}}</td>
                 <td>{{$product->name}}</td>
                 <td>{!!$product->quantity  !!}</td>
-                <td>{!!$product->image  !!}</td>
+                <td> <img width="150" src="storage/{{$product->image}}"></td>
                 <td>{!!$product->price  !!}</td>
+                <th>
+                <td>
+                    <div class="btn-group gap-2">
+                        <a href="{{route('products.edit', $product)}}" class="btn btn-primary">Update</a>
+                        <form method="post" action="{{route('products.destroy', $product)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                        </form>
+                    </div>
+                </td>
+                </th>
             </tr>
         @empty
             <tr>
@@ -37,7 +50,7 @@
         </tbody>
         </table>
 
-
+        {{$products->links()}}
 
 
 
