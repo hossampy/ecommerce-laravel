@@ -56,7 +56,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $product = new Product();
+
         $isUpdate = true;
         return view('product.form',compact('product','isUpdate'));
     }
@@ -64,9 +64,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
-    {
-        //
+    public function update(ProductRequest $request, Product $product)
+
+    { $formFields=$request->validated();
+
+        $product->fill( $formFields)->save();
+        return to_route('products.index')->with('success', 'Product updated successfully');
+
     }
 
     /**

@@ -1,13 +1,25 @@
 @extends('base')
 @section('title',$isUpdate ? 'Update product' :'create product' )
 
+@php
+
+$route = route('products.store');
+if ($isUpdate){
+    $route = route('products.update',$product);
+}
+
+@endphp
+
+
 @section('content')
 
     <h1 >@yield('title')</h1>
 
-    <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{$route}}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('POST')
+        @if($isUpdate)
+            @method('PUT')
+        @endif
 
         <div class="form-group">
             <label for="name" class="form-label">Name</label>
@@ -25,9 +37,12 @@
         </div>
 
         <div class="form-group">
+
             <label for="image" class="form-label">Image</label>
             <input type="file" name="image" id="image" class="form-control">
-
+            @if($product->image)
+                <img width="150" src="/storage/{{$product->image}}">
+            @endif
         </div>
         <div class="form-group">
             <label for="price" class="form-label">Price</label>
@@ -43,7 +58,7 @@
             </select>
         </div>
         <div class="form-group my-3">
-            <input type="submit" class="btn btn-primary w-100" value="submit">
+            <input type="submit" class="btn btn-primary w-100" value="{{$isUpdate ? 'Update':'Create'}}">
         </div>
     </form>
 
