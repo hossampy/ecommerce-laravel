@@ -13,7 +13,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $products = Product::query()->paginate(4);
+        $products = Product::query()->orderBy('created_at','desc')->paginate(4);
         return view('store.index',compact('products'));
     }
 
