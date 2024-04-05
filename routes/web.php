@@ -5,8 +5,6 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\StoreController::class,'index']);
 
 Route::resource('products', ProductController::class);
