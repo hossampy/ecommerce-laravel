@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -23,15 +24,23 @@ class   CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = new Category();
+        $isUpdate = false;
+        return view('category.form',compact('category' ,'isUpdate'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $category)
     {
-        //
+        $formFields = $category->input();
+        Category::create($formFields);
+
+        return to_route('categories.index')->with('success', 'Category created successfully');
+
+
     }
 
     /**
@@ -63,6 +72,7 @@ class   CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return to_route('categories.index');
     }
 }

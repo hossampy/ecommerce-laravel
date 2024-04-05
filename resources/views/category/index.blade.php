@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <h1>Categories</h1>
-        <a href="" class="btn btn-primary">Create</a>
+        <a href="{{route('categories.create')}}" class="btn btn-primary">Create</a>
     </div>
     <table class="table">
         <thead>
@@ -24,7 +24,7 @@
                     <div class="btn-group gap-2">
                         <a href="" class="btn btn-info">Show</a>
                         <a href="" class="btn btn-primary">Update</a>
-                        <form method="post" action="">
+                        <form method="post" action="{{route('categories.destroy',$category)}}">
                             @csrf
                             @method('DELETE')
                             <input type="submit" class="btn btn-danger" value="Delete"/>
