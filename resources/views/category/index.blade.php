@@ -3,11 +3,11 @@
 @section('title', 'Categories')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center mt-5">
         <h1>Categories</h1>
-        <a href="{{route('categories.create')}}" class="btn btn-primary">Create</a>
+        <a href="{{route('categories.create')}}" class="btn btn-primary">Create New Category</a>
     </div>
-    <table class="table">
+    <table class="table mt-2">
         <thead>
         <tr>
             <th>#ID</th>
@@ -22,7 +22,7 @@
                 <td>{{$category->name}}</td>
                 <td>
                     <div class="btn-group gap-2">
-                        <a href="" class="btn btn-info">Show</a>
+                        <a href="{{route('categories.show',$category)}}" class="btn btn-info">show</a>
                         <a href="{{route('categories.edit',$category)}}" class="btn btn-primary">Update</a>
                         <form method="post" action="{{route('categories.destroy',$category)}}">
                             @csrf

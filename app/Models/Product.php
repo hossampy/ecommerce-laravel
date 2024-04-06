@@ -17,7 +17,11 @@ class Product extends Model
         'quantity',
         'image',
         'price',
+        'category_id',
         ];
+        public function category()
+        {
+            return $this->belongsTo(Category::class);
+        }
 
-    use HasFactory;
 }

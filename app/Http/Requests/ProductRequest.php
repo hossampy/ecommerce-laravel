@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
             'name'=>'required|min:5',
             'description'=>'required|min:5',
             'quantity'=>'required|numeric',
-
+            'category_id'=>'required',
             'price'=>'required|numeric',
 
         ];

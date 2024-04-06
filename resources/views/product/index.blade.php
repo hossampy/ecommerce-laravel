@@ -12,7 +12,6 @@
             <th>#ID</th>
             <th>Name</th>
             <th>Description</th>
-
             <th>Quantity</th>
             <th>Image</th>
             <th>Price</th>
@@ -25,10 +24,11 @@
             <tr>
                 <td>{{$product->id}}</td>
                 <td>{{$product->name}}</td>
+                <td>{{$product->description}}</td>
                 <td>{!!$product->quantity  !!}</td>
                 <td> <img width="150" src="storage/{{$product->image}}"></td>
                 <td>{!!$product->price  !!}</td>
-                <th>
+
                 <td>
                     <div class="btn-group gap-2">
                         <a href="{{route('products.edit', $product)}}" class="btn btn-primary">Update</a>
@@ -38,8 +38,16 @@
                             <input type="submit" class="btn btn-danger" value="Delete"/>
                         </form>
                     </div>
+                <td>
+
+                    @if($product->category)
+                        <a href="" class="btn btn-link ">
+                        <span class="badge bg-primary p-2">
+                          {{$product->category->name}}
+                        </span>
+                        </a>
+                    @endif
                 </td>
-                </th>
             </tr>
         @empty
             <tr>

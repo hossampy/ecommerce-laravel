@@ -53,7 +53,10 @@ if ($isUpdate){
         <div class="form-group">
             <label for="category_id" class="form-label">Category</label>
             <select name="category_id" id="category_id" class="form-select">
-                <option value="">Please choose your category</option>
+
+                @foreach($categories as $category)
+                    <option @selected(old('category_id', $product->category_id) === $category->id) value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
 
             </select>
         </div>
