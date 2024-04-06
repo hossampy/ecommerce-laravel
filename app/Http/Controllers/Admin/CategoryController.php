@@ -56,15 +56,21 @@ class   CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $isUpdate = true;
+        return view('category.form',compact('category','isUpdate'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $name = $request->input('name');
+
+        $category->name =$name;
+        $category->save();
+        return to_route('categories.index')->with('success', 'Category created successfully');
+
     }
 
     /**
