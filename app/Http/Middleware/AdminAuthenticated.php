@@ -15,6 +15,9 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if(Auth::check() && Auth::user()->isAdmin()){
+            return $next($request);
+        }
+        abort(403);
     }
 }
