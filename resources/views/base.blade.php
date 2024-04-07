@@ -10,6 +10,7 @@
 </head>
 <body>
  <div class="container">
+     @include('shared.nav')
      @if($errors->any())
          <div class="alert alert-danger" role="alert">
              <strong>Error</strong>

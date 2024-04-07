@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -57,5 +58,16 @@ class User extends Authenticatable
     public function isEditor(): bool
     {
         return $this->hasRole('editor');
+    }
+
+    public function getRedirectRoute()
+    {
+        if ($this->isEditor()) {
+            return ('editor_dashboard');
+        } else if ($this->isAdmin()) {
+            return ('admin_dashboard');
+        }
+        return redirect()->intended(route('dashboard', absolute: false));
+
     }
 }

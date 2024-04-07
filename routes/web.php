@@ -9,6 +9,9 @@ use App\Http\Middleware\AdminAuthenticated;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/store', [\App\Http\Controllers\StoreController::class, 'index'])->name('home_page');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,6 +24,10 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
+
+
+
 
 });
 /// admine
@@ -29,6 +36,9 @@ Route::middleware(AdminAuthenticated::class)->group(function () {
     Route::resource('categories', CategoryController::class);
 
 });
-
+/// editor
+Route::middleware(\App\Http\Middleware\EditorAuthenticated::class)->group(function () {
+    Route::get('/editor/dashboard', [\App\Http\Controllers\Editor\EditorController::class, 'index'])->name('editor_dashboard');
+});
 
 require __DIR__.'/auth.php';
