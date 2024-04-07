@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Middleware\AdminAuthenticated;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,6 +19,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::resource('products', ProductController::class);
+    Route::resource('categories', CategoryController::class);
+
+});
+/// admine
+Route::middleware(AdminAuthenticated::class)->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
 
