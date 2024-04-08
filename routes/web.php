@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Editor\EditorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -40,7 +41,7 @@ Route::middleware(AdminAuthenticated::class)->group(function () {
 Route::middleware(\App\Http\Middleware\EditorAuthenticated::class)->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
-    Route::get('/editor/dashboard', [\App\Http\Controllers\Editor\EditorController::class, 'index'])->name('editor_dashboard');
+    Route::get('/editor/dashboard', [EditorController::class, 'index'])->name('editor_dashboard');
 });
 
 require __DIR__.'/auth.php';
