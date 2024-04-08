@@ -38,6 +38,8 @@ Route::middleware(AdminAuthenticated::class)->group(function () {
 });
 /// editor
 Route::middleware(\App\Http\Middleware\EditorAuthenticated::class)->group(function () {
+    Route::resource('products', ProductController::class);
+    Route::resource('categories', CategoryController::class);
     Route::get('/editor/dashboard', [\App\Http\Controllers\Editor\EditorController::class, 'index'])->name('editor_dashboard');
 });
 

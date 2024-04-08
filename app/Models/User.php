@@ -52,12 +52,12 @@ class User extends Authenticatable
     }
     public function isUser(): bool
     {
-        return $this->hasRole('user');
+        return $this->role === 'user';
     }
 
     public function isEditor(): bool
     {
-        return $this->hasRole('editor');
+        return $this->role ==='editor';
     }
 
     public function getRedirectRoute()

@@ -1,4 +1,4 @@
-@extends('bazse')
+@extends('layouts.app')
 
 @section('title', 'Categories')
 

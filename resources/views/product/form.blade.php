@@ -1,4 +1,4 @@
-@extends('bazse')
+@extends('layouts.app')
 @section('title',$isUpdate ? 'Update product' :'create product' )
 
 @php
