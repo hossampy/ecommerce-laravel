@@ -21,7 +21,7 @@
         </div>
         <div class="hidden lg:block">
             <div class="flex items-center">
-                <a href="{{route('home_page')}}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">Home</a>
+                <a href="{{route('home_page')}}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">Store and products</a>
                 <a href="#" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">About</a>
                 <a href="" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white">Contact</a>
                 <a href="{{route('login')}}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white ml-4">Login</a>
