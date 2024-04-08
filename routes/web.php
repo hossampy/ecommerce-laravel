@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Editor\EditorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminAuthenticated;
 use App\Http\Middleware\EditorAuthenticated;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Middleware\AdminAuthenticated;
 
 Route::get('/', function () {
     return view('welcome');
