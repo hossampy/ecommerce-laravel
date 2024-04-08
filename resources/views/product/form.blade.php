@@ -1,19 +1,19 @@
-@extends('base')
+@extends('bazse')
 @section('title',$isUpdate ? 'Update product' :'create product' )
 
 @php
 
-$route = route('products.store');
-if ($isUpdate){
-    $route = route('products.update',$product);
-}
+    $route = route('products.store');
+    if ($isUpdate){
+        $route = route('products.update',$product);
+    }
 
 @endphp
 
 
 @section('content')
 
-    <h1 >@yield('title')</h1>
+    <h1>@yield('title')</h1>
 
     <form action="{{$route}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -64,10 +64,6 @@ if ($isUpdate){
             <input type="submit" class="btn btn-primary w-100" value="{{$isUpdate ? 'Update':'Create'}}">
         </div>
     </form>
-
-
-
-
 
 @endsection
 

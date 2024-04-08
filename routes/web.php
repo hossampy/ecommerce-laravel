@@ -42,3 +42,7 @@ Route::middleware(\App\Http\Middleware\EditorAuthenticated::class)->group(functi
 });
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-@extends('base')
+@extends('bazse')
 
 @section('title', 'Categories')
 

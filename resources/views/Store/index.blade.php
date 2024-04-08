@@ -1,5 +1,5 @@
 @php use Illuminate\Support\Facades\Request; @endphp
-@extends('base')
+@extends('layouts.app')
 
 @section('title', 'Products')
 

@@ -1,12 +1,12 @@
-@extends('base')
-@section('title','Prodzucts')
+@extends('layouts.app')
+@section('title','Products')
 
 @section('content')
-    <div class="d-flex justify-content-between m-4 align-items-center">
+    <div class="d-flex justify-content-between m-4  align-items-center">
         <h1>Product list </h1>
         <a href="{{route('products.create')}}" class="btn btn-primary">Create</a>
     </div>
-    <table class="table">
+    <table class="table m-4 overflow-hidden">
         <thead>
         <tr>
             <th>#ID</th>

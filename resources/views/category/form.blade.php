@@ -1,4 +1,4 @@
-@extends('base')
+@extends('bazse')
 
 @section('title', ($isUpdate?'Update':'Create').' category')
 
@@ -21,10 +21,12 @@
                     @endif
                     <div class="m-50">
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{{ old('name', $category->name) }}">
+                            <input type="text" name="name" id="name" placeholder="Name" class="form-control"
+                                   value="{{ old('name', $category->name) }}">
                         </div>
                         <div class="form-group my-3">
-                            <input type="submit" class="btn btn-primary w-100" value="{{ $isUpdate ? 'Edit' : 'Create' }}">
+                            <input type="submit" class="btn btn-primary w-100"
+                                   value="{{ $isUpdate ? 'Edit' : 'Create' }}">
                         </div>
                     </div>
                 </form>
