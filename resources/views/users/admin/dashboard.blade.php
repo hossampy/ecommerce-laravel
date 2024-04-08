@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title','Editor')
-
+@section('sidebar')
+    <div class="list-group">
+        <a href="" class="list-group-item list-group-item-action active">Dashboard</a>
+        <a  href="" class="list-group-item list-group-item-action">Products</a>
+        <a  href="" class="list-group-item list-group-item-action">Categories</a>
+    </div>
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
