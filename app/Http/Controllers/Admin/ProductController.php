@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::query()->with('category')->paginate(5);
-        return view('product.index',compact('products'));
+        return view('users.admin.product.index', compact('products'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductController extends Controller
         $product = new Product();
         $categories = Category::all();
         $isUpdate = false;
-        return view('product.form',compact('product' ,'isUpdate','categories'));
+        return view('users.admin.product.form',compact('product' ,'isUpdate','categories'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $isUpdate = true;
-        return view('product.form',compact('product','isUpdate','categories'));
+        return view('users.admin.product.form',compact('product','isUpdate','categories'));
     }
 
     /**

@@ -47,7 +47,8 @@ class LoginController extends Controller
             return redirect()->route('editor_dashboard');
 
         }
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->route('dashboard');
+       // return redirect()->intended(route('dashboard', absolute: false));
 
     }
 }

@@ -37,7 +37,7 @@
 
     <main class="py-4">
         <div class="row">
-            <div class="col-4">@yield('sidebar')</div>
+            <div class="col-2">@yield('sidebar')</div>
             <div class="col-8">@yield('content')</div>
 
         </div>
