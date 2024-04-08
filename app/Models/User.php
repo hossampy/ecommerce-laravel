@@ -46,7 +46,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return $this->role === 'admin'; // Assuming there is a 'role' column in the users table
     }

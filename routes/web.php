@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Editor\EditorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\EditorAuthenticated;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -23,11 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
+
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
-
-
 
 
 });
@@ -35,13 +36,12 @@ Route::middleware('auth')->group(function () {
 Route::middleware(AdminAuthenticated::class)->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
-
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
 });
 /// editor
-Route::middleware(\App\Http\Middleware\EditorAuthenticated::class)->group(function () {
-    Route::resource('products', ProductController::class);
-    Route::resource('categories', CategoryController::class);
-    Route::get('/editor/dashboard', [EditorController::class, 'index'])->name('editor_dashboard');
+Route::middleware(EditorAuthenticated::class)->group(function () {
+    Route::get('editor/dashboard', [EditorController::class, 'index'])->name('editor_dashboard');
+
 });
 
 require __DIR__.'/auth.php';
