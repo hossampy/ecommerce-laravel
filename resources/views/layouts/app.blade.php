@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> @yield('title')  {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -18,18 +18,7 @@
 </head>
 <body class="overflow-x-hidden">
 
-@if($errors->any())
-    <div class="alert alert-danger" role="alert">
-        <strong>Error</strong>
-        <ul>
-            @foreach($errors->all() as $error )
 
-                <li> {{@$error}}</li>
-
-            @endforeach
-        </ul>
-    </div>
-@endif
 @include('layouts.nav')
 <div  class="container" id="app">
 
@@ -38,7 +27,24 @@
     <main class="py-4">
         <div class="row">
             <div class="col-2">@yield('sidebar')</div>
-            <div class="col-8">@yield('content')</div>
+
+            <div class="col-8">
+                <div>
+                    @if($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Error</strong>
+                            <ul>
+                                @foreach($errors->all() as $error )
+
+                                    <li> {{@$error}}</li>
+
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                @yield('content')
+            </div>
 
         </div>
 

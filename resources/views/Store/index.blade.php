@@ -4,33 +4,40 @@
 @section('title', 'Products')
 
 @section('sidebar')
-    <div class="sidebar">
-        <h1>Filters</h1>
-        <hr>
-        <form method="get">
-            <div class="form-group">
-                <label for="name">Name or description</label>
-                <input type="text" name="name" id="name" value="{{Request::input('name')}}" class="form-control" placeholder="Name">
+    <h1>Filters</h1>
+    <hr>
+    <form method="get">
+        <div class="form-group">
+            <label for="name">Name or description</label>
+            <input type="text" name="name" id="name" value="{{Request::input('name')}}" class="form-control"
+                   placeholder="Name">
+        </div>
+        <h3>Categories</h3>
+        @php
+            $categoriesIds=Request::input('categories')?? [];
+        @endphp
+
+            <div class="form-check">
+                <input type="checkbox" name="categories[]"
+                       value="" class="form-check-input">
+                <label class="form-check-label"></label>
             </div>
-            <h3>Categories</h3>
-            @php
-                $categoriesIds=Request::input('categories') ?? [];
-            @endphp
-                <!-- Add your category filter checkboxes here -->
-            <h3>Pricing</h3>
-            <div class="form-group">
-                <label for="min">Min</label>
-                <input min="" max="" type="number" name="min" id="min" value="{{Request::input('min')}}" class="form-control" placeholder="Min price">
-                <label for="max">Max</label>
-                <input min="" max="" type="number" name="max" id="max" value="{{Request::input('max')}}" class="form-control" placeholder="Max price">
-            </div>
-            <div class="form-group my-2">
-                <button type="submit" class="btn btn-primary">Filter</button>
-                <a type="reset" class="btn btn-secondary" href="">Reset</a>
-            </div>
-        </form>
-        <hr>
-    </div>
+
+        <h3>Pricing</h3>
+        <div class="form-group">
+            <label for="min">Min</label>
+            <input min="" max="" type="number" name="min" id="min" value="{{Request::input('min')}}" class="form-control"
+                   placeholder="Min price">
+            <label for="max">Max</label>
+            <input min="}" max="" type="number" name="max" id="max" value="{{Request::input('max')}}" class="form-control"
+                   placeholder="Max price">
+        </div>
+        <div class="form-group my-2">
+            <input type="submit" class="btn btn-primary" value="Filter">
+            <a type="reset" class="btn btn-secondary" href="{{route('home_page')}}">Reset</a>
+        </div>
+    </form>
+    <hr>
 @endsection
 
 @section('content')
