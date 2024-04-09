@@ -75,6 +75,6 @@
                 </div>
             @endforelse
         </div>
-        {{$products->links()}}
-    </div>
+    {{--   {{$products->links()}} --}}
+</div>
 @endsection

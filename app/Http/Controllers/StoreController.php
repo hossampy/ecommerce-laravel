@@ -11,9 +11,15 @@ class StoreController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::query()->orderBy('created_at','desc')->paginate(4);
+      //  $products = Product::query()->orderBy('created_at','desc')->paginate(4);
+        $products = Product::query()->get();
+
+        $name=($request->input('name'));
+        if(!empty($name)){
+            dd('ok');
+        }
         return view('store.index',compact('products'));
     }
 
