@@ -14,7 +14,10 @@
             <ul class="navbar-nav me-auto">
 
             </ul>
+            @if(Auth::check() && Auth::user()->isAdmin())
 
+                <a href="{{ route('admin_dashboard') }}" class="block lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">Dashboard</a>
+            @endif
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
